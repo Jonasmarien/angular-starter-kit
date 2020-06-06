@@ -8,6 +8,7 @@ export class ErrorService {
 
   constructor() { }
 
+  // Implement your own logging method
   log(error: Error): void {
     switch (error.constructor) {
       case HttpErrorResponse:
