@@ -8,15 +8,13 @@ export class ErrorService {
 
   constructor() { }
 
-  // Implement your own logging method
+  // Replace with your own external logging method
   log(error: Error): void {
     switch (error.constructor) {
       case HttpErrorResponse:
-        console.error((error as HttpErrorResponse).message);
-        break;
+        console.error((error as HttpErrorResponse).message); break;
       default:
-        console.error(error.message);
-        break;
+        console.error(error.message); break;
     }
   }
 }
