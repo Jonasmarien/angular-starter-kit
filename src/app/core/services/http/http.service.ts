@@ -20,19 +20,19 @@ export class HttpService {
     let response: Observable<any>;
     switch (method) {
       case ApiMethod.GET:
-        response = this.http.get(environment.apiUrl + endpoint)
+        response = this.http.get(environment.baseDomain + endpoint)
           .pipe(catchError((err) => this.handleError(err)));
         break;
       case ApiMethod.POST:
-        response = this.http.post(environment.apiUrl + endpoint, data)
+        response = this.http.post(environment.baseDomain + endpoint, data)
           .pipe(catchError((err) => this.handleError(err)));
         break;
       case ApiMethod.PUT:
-        response = this.http.put(environment.apiUrl + endpoint, data)
+        response = this.http.put(environment.baseDomain + endpoint, data)
           .pipe(catchError((err) => this.handleError(err)));
         break;
       case ApiMethod.DELETE:
-        response = this.http.delete(environment.apiUrl + endpoint)
+        response = this.http.delete(environment.baseDomain + endpoint)
           .pipe(catchError((err) => this.handleError(err)));
         break;
     }
