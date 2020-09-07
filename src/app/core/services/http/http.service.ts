@@ -16,23 +16,23 @@ export class HttpService {
     private errorService: ErrorService
   ) { }
 
-  requestCall(endpoint: string, method: ApiMethod, data?: any): Observable<any> {
+  requestCall<T>(endpoint: string, method: ApiMethod, data?: any): Observable<T> {
     let response: Observable<any>;
     switch (method) {
       case ApiMethod.GET:
-        response = this.http.get(environment.baseDomain + endpoint)
+        response = this.http.get<T>(environment.baseDomain + endpoint)
           .pipe(catchError((err) => this.handleError(err)));
         break;
       case ApiMethod.POST:
-        response = this.http.post(environment.baseDomain + endpoint, data)
+        response = this.http.post<T>(environment.baseDomain + endpoint, data)
           .pipe(catchError((err) => this.handleError(err)));
         break;
       case ApiMethod.PUT:
-        response = this.http.put(environment.baseDomain + endpoint, data)
+        response = this.http.put<T>(environment.baseDomain + endpoint, data)
           .pipe(catchError((err) => this.handleError(err)));
         break;
       case ApiMethod.DELETE:
-        response = this.http.delete(environment.baseDomain + endpoint)
+        response = this.http.delete<T>(environment.baseDomain + endpoint)
           .pipe(catchError((err) => this.handleError(err)));
         break;
     }
